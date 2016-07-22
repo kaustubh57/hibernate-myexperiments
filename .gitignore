@@ -1,0 +1,14 @@
+.DS_Store
+.classpath
+.idea
+.project
+.settings
+*.iml
+*.ipr
+*.iws
+*.log
+*.swp
+*.rdb
+*~
+node_modules
+target/
