@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- DB2 configuration -->
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.DB2Dialect</property>
+        <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
+        <property name="hibernate.connection.url">jdbc:db2://localhost:50000/mojodb</property>
+        <property name="hibernate.connection.username">xd</property>
+        <property name="hibernate.connection.password">xdpw</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.generate_statistics">false</property>
+        <property name="hibernate.use_sql_comments">false</property>
+        <property name="hibernate.default_schema">xd</property>
+        <mapping class="com.hibernate.myexperiments.models.Employee"/>
+        <mapping class="com.hibernate.myexperiments.models.User"/>
+        <mapping class="com.hibernate.myexperiments.models.Account"/>
+        <mapping class="com.hibernate.myexperiments.models.Storyboard"/>
+        <mapping class="com.hibernate.myexperiments.models.Interaction"/>
+        <mapping class="com.hibernate.myexperiments.models.Objective"/>
+        <mapping class="com.hibernate.myexperiments.models.Message"/>
+        <mapping class="com.hibernate.myexperiments.models.Comment"/>
+        <mapping class="com.hibernate.myexperiments.models.Goal"/>
+        <mapping class="com.hibernate.myexperiments.models.Segment"/>
+        <mapping class="com.hibernate.myexperiments.models.CommentAttachment"/>
+        <mapping class="com.hibernate.myexperiments.models.InteractionAttachment"/>
+        <mapping class="com.hibernate.myexperiments.models.MessageAttachment"/>
+        <mapping class="com.hibernate.myexperiments.models.AccountAuthentication"/>
+        <mapping class="com.hibernate.myexperiments.models.AccountEngageSubscription"/>
+        <mapping class="com.hibernate.myexperiments.models.Task"/>
+        <mapping class="com.hibernate.myexperiments.models.TaskScope"/>
+        <mapping class="com.hibernate.myexperiments.models.InteractionType"/>
+        <mapping class="com.hibernate.myexperiments.models.TaskAttachment"/>
+        <mapping class="com.hibernate.myexperiments.models.TaskUnreadUser"/>
+        <mapping class="com.hibernate.myexperiments.models.Connector"/>
+        <mapping class="com.hibernate.myexperiments.models.ConnectorAttachment"/>
+        <mapping class="com.hibernate.myexperiments.models.CampaignSettings"/>
+        <mapping class="com.hibernate.myexperiments.models.CampaignLink"/>
+    </session-factory>
+</hibernate-configuration>
