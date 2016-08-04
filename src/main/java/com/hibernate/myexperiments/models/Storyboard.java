@@ -1,6 +1,7 @@
 package com.hibernate.myexperiments.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CustomFormula;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,6 +11,9 @@ import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.Filters;
 import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 import org.hibernate.annotations.ParamDef;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -113,8 +117,9 @@ public class Storyboard implements Tenant, XdModel, CommentAware {
     @OneToMany(mappedBy = "storyboard", fetch = FetchType.LAZY)
     private Set<Comment> comments;
 
-//    @Transient
-    @Formula("(select min(i.in_market_date) from xd.interaction i where i.storyboard_id = id)")
+    @Transient
+//    @Formula(value = "(select min(i.in_market_date) from interaction i where i.storyboard_id = id)")
+//    @Formula("(select i from Interaction i where i.storyboard_id = id)")
 //    @Transient
 //    @OneToOne
 //    @JoinColumnsOrFormulas({
@@ -123,17 +128,33 @@ public class Storyboard implements Tenant, XdModel, CommentAware {
 //    })
 //    @JoinColumnOrFormula(formula = @JoinFormula(value = "(select min(i.inMarketDate) FROM Interaction i " +
 //        "WHERE i.storyboard_id = id)", referencedColumnName = "id"))
+//    @Transient
+//    @Column(insertable = false, updatable = false, unique = true, table = "interaction")
     private Date startDate;
 
-    @Formula("(select count(c.context_id) from xd.comments c where c.context_id=id group by c.context_id)")
+    @Transient
+//    @OneToOne
+////    @JoinColumn(name = "storyboard_id", )
+////    @JoinColumnsOrFormulas({
+////            @JoinColumnOrFormula(column = @JoinColumn(name = "storyboard_id", referencedColumnName = "id"))
+////            @JoinColumnOrFormula(formula = @JoinFormula(value = "CDT_MFG_CODE", referencedColumnName = "MDL_MFG_CODE")),
+////            @JoinColumnOrFormula(column = @JoinFormula(name = "CDT_COMPANY_CODE", referencedColumnName = "MDL_COMPANY_CODE"))
+////    })
+////    @ManyToOne
+//    @JoinColumnsOrFormulas({
+//            @JoinColumnOrFormula(formula=@JoinFormula(value="(select min(i.in_market_date) from interaction i where i.storyboard_id = id)", referencedColumnName="id"))
+////            @JoinColumnOrFormula(column = @JoinColumn(name = "id", referencedColumnName="storyboard_id"))
+//    })
+//    private Interaction interactionStartDate;
+//    @Formula("(select count(c.context_id) from xd.comments c where c.context_id=id group by c.context_id)")
     private Long commentCount;
 
-    public Long getCommentCount() {
-        if (commentCount == null) {
-            commentCount = 0L;
-        }
-        return commentCount;
-    }
+//    public Long getCommentCount() {
+//        if (commentCount == null) {
+//            commentCount = 0L;
+//        }
+//        return commentCount;
+//    }
 
     @Transient
     private Date endDate;

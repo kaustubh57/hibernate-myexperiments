@@ -5,12 +5,12 @@
 <hibernate-configuration>
     <session-factory>
         <!-- DB2 configuration -->
-        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
         <property name="hibernate.dialect">com.hibernate.myexperiments.custom.dialect.CustomDB2Dialect</property>
         <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
         <property name="hibernate.connection.url">jdbc:db2://localhost:50000/mojodb</property>
         <property name="hibernate.connection.username">xd</property>
         <property name="hibernate.connection.password">xdpw</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
         <property name="hibernate.hbm2ddl.auto">validate</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
